@@ -122,3 +122,33 @@ basket.push('watermelons', 'guavas', 'tomatoes');
 console.log(`Basket contains ${basket.length} items`);
 console.log(`Adding dragonfruit (expect true)`, addItemSafely('dragonfruit'));
 console.log(`Basket contains ${basket.length} items`);
+
+// Using Array built-in functions!
+//
+// 4. Create a function called removeItem. It should:
+// Take an input parameter for a string item
+// Use Array.indexOf to find the index of the first matching item in the basket.
+// Use Array.splice to remove the first matching item from the basket.
+// Return the item removed or null if the item was not found
+function removeItem(item) {
+  const itemIndex = basket.indexOf(item);
+  if (itemIndex >= 0) { // test if item was found
+    const removedItem = basket.splice(itemIndex, 1);
+    return removedItem[0]; // return a string instead of an array
+  } else {
+    return null;
+  }
+}
+
+// test
+basket = ['pears', 'apples', 'grapes'];
+console.log('---TEST removeItem---');
+console.log(`Basket contains ${basket}`);
+console.log(`Removing pears; expecting "pears": `, removeItem('pears'));
+console.log(`Basket contains ${basket}`);
+
+console.log(`Removing bananas; expecting "null": `, removeItem('bananas'));
+console.log(`Basket contains ${basket}`);
+
+console.log(`Removing grapes; expecting "grapes": `, removeItem('grapes'));
+console.log(`Basket contains ${basket}`);
