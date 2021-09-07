@@ -1,7 +1,7 @@
 console.log('***** Cart Functions *****');
 // Make sure to test all functions here in the JS file!
 // We want to see how you are testing your code!!!
-const basket = [];
+let basket = [];
 
 // Create a function called addItem. It should:
 //
@@ -14,10 +14,10 @@ function addItem(item) {
 }
 
 // test
-console.log(`Basket is ${basket}`);
+console.log(`Basket is ${basket}: (will be nothing if empty)`);
 console.log(`Adding apples (expect true)`, addItem('apples'));
-console.log(`Basket is now ${basket}`);
-console.log(`Basket is ${basket}`);
+console.log(`Basket is now ${basket}: (will be nothing if empty`);
+console.log(`Basket is ${basket}: (will be nothing if empty`);
 console.log(`Adding pears (expect true)`, addItem('pears'));
 console.log(`Basket is now ${basket}`);
 
@@ -38,3 +38,20 @@ console.log(listItems());
 addItem('bananas');
 console.log(`Basket is currently ${basket}, listing items below on new lines:`);
 console.log(listItems());
+
+// Create a function called empty. It should:
+//
+// reset the basket to an empty array
+
+function empty() {
+  basket = [];
+}
+
+// test
+console.log(`Basket is currently ${basket}, listing items below on new lines:`);
+console.log('Emptying basket ...');
+empty();
+console.log(`Basket is currently ${basket}: (will be nothing if empty)`);
+console.log(`Basket is ${basket}: (will be nothing if empty)`);
+console.log(`Adding apples (expect true)`, addItem('apples'));
+console.log(`Basket is now ${basket}: (will be nothing if empty)`);
