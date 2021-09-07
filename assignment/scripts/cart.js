@@ -16,8 +16,8 @@ function addItem(item) {
 // test
 console.log(`Basket is ${basket}: (will be nothing if empty)`);
 console.log(`Adding apples (expect true)`, addItem('apples'));
-console.log(`Basket is now ${basket}: (will be nothing if empty`);
-console.log(`Basket is ${basket}: (will be nothing if empty`);
+console.log(`Basket is now ${basket}: (will be nothing if empty)`);
+console.log(`Basket is ${basket}: (will be nothing if empty)`);
 console.log(`Adding pears (expect true)`, addItem('pears'));
 console.log(`Basket is now ${basket}`);
 
@@ -68,12 +68,18 @@ const maxItems = 5;
 // return false if the basket contains less than max number of items
 // return true otherwise (equal or more than maxItems)
 
+// function before I refactored:
+// not sure which one reads easier, but I think it's the shorter one
+// function isFull() {
+//   if (basket.length < maxItems) {
+//     return false;
+//   } else { // equal or more, since it's not less
+//     return true;
+//   }
+// }
+
 function isFull() {
-  if (basket.length < maxItems) {
-    return false;
-  } else { // equal or more, since it's not less
-    return true;
-  }
+  return basket.length >= maxItems;
 }
 
 // test
@@ -82,4 +88,33 @@ console.log(`Items in basket = ${basket.length} while the maximum items allowed 
 console.log(`Is basket full? Expect: false`, isFull());
 basket.push('pineapples', 'oranges');
 console.log(`Items in basket = ${basket.length} while the maximum items allowed is ${maxItems}.`);
-console.log(`Is basket full? Expect: false`, isFull());
+console.log(`Is basket full? Expect: true`, isFull());
+
+// 3. Update the required addItem function to:
+//
+// Use the isFull function to prevent more than maxItems from being added to the basket.
+// If an item was added to the array, return true
+// If there was no room and the item could not be added return false
+//
+// I've left addItem in place and created addItemSafely below
+
+function addItemSafely(item) {
+  if (!isFull()) {
+    basket.push(item);
+    return true;
+  } else {
+    console.log('Item could not be added!');
+    return false;
+  }
+}
+
+// test
+
+console.log(`Basket is ${basket}: (will be nothing if empty)`);
+console.log(`Adding dragonfruit (expect false)`, addItemSafely('apples'));
+console.log(`Basket is now ${basket}: (will be nothing if empty)`);
+console.log(`Emptying basket...`);
+empty();
+console.log(`Basket is ${basket}: (will be nothing if empty)`);
+console.log(`Adding pears (expect true)`, addItemSafely('pears'));
+console.log(`Basket is now ${basket}`);
