@@ -55,3 +55,31 @@ console.log(`Basket is currently ${basket}: (will be nothing if empty)`);
 console.log(`Basket is ${basket}: (will be nothing if empty)`);
 console.log(`Adding apples (expect true)`, addItem('apples'));
 console.log(`Basket is now ${basket}: (will be nothing if empty)`);
+
+// Stretch Goals
+// Using functions in other functions!
+
+// 1. Add a global const named maxItems and set it to 5.
+
+const maxItems = 5;
+
+// 2. Create a function called isFull(). It should:
+//
+// return false if the basket contains less than max number of items
+// return true otherwise (equal or more than maxItems)
+
+function isFull() {
+  if (basket.length < maxItems) {
+    return false;
+  } else { // equal or more, since it's not less
+    return true;
+  }
+}
+
+// test
+basket = ['apples', 'pears', 'bananas'];
+console.log(`Items in basket = ${basket.length} while the maximum items allowed is ${maxItems}.`);
+console.log(`Is basket full? Expect: false`, isFull());
+basket.push('pineapples', 'oranges');
+console.log(`Items in basket = ${basket.length} while the maximum items allowed is ${maxItems}.`);
+console.log(`Is basket full? Expect: false`, isFull());
