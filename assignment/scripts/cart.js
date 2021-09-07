@@ -20,3 +20,21 @@ console.log(`Basket is now ${basket}`);
 console.log(`Basket is ${basket}`);
 console.log(`Adding pears (expect true)`, addItem('pears'));
 console.log(`Basket is now ${basket}`);
+
+// Create a function called listItems. It should:
+//
+// loop over the items in the basket array
+// console.log each individual item on a new line
+
+function listItems() {
+  for (const item of basket) {
+    console.log(item);
+  }
+}
+
+// test
+console.log(`Basket is currently ${basket}, listing items below on new lines:`);
+console.log(listItems());
+addItem('bananas');
+console.log(`Basket is currently ${basket}, listing items below on new lines:`);
+console.log(listItems());
