@@ -109,12 +109,16 @@ function addItemSafely(item) {
 }
 
 // test
-
-console.log(`Basket is ${basket}: (will be nothing if empty)`);
-console.log(`Adding dragonfruit (expect false)`, addItemSafely('apples'));
-console.log(`Basket is now ${basket}: (will be nothing if empty)`);
+console.log('---TEST addItemSafely---');
+console.log(`Basket contains ${basket.length} items`); // still full from above
+console.log(`Adding dragonfruit (expect false)`, addItemSafely('dragonfruit'));
+console.log(`Basket contains ${basket.length} items`);
 console.log(`Emptying basket...`);
 empty();
-console.log(`Basket is ${basket}: (will be nothing if empty)`);
+console.log(`Basket contains ${basket.length} items`);
 console.log(`Adding pears (expect true)`, addItemSafely('pears'));
-console.log(`Basket is now ${basket}`);
+console.log(`Basket contains ${basket.length} items`);
+basket.push('watermelons', 'guavas', 'tomatoes');
+console.log(`Basket contains ${basket.length} items`);
+console.log(`Adding dragonfruit (expect true)`, addItemSafely('dragonfruit'));
+console.log(`Basket contains ${basket.length} items`);
