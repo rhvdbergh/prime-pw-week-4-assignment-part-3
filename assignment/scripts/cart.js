@@ -9,7 +9,7 @@ let basket = [];
 // add the new item to the global array basket.
 // return true indicating the item was added
 function addItem(item) {
-  basket.push(item);
+  basket.push(item); // adds item to basket
   return true;
 }
 
@@ -27,8 +27,8 @@ console.log(`Basket is now ${basket}`);
 // console.log each individual item on a new line
 
 function listItems() {
-  for (const item of basket) {
-    console.log(item);
+  for (const item of basket) { // loops through
+    console.log(item); // and prints each item on a new line
   }
 }
 
@@ -44,7 +44,7 @@ console.log(listItems());
 // reset the basket to an empty array
 
 function empty() {
-  basket = [];
+  basket = []; // basket was declared by let and can be reset to an empty string
 }
 
 // test
@@ -79,6 +79,8 @@ const maxItems = 5;
 // }
 
 function isFull() {
+  // checks whether there are equal or more than the allowed maxItems in the basket
+  // and returns the result; will be true if basket is full
   return basket.length >= maxItems;
 }
 
@@ -99,11 +101,11 @@ console.log(`Is basket full? Expect: true`, isFull());
 // I've left addItem in place and created addItemSafely below
 
 function addItemSafely(item) {
-  if (!isFull()) {
+  if (!isFull()) { // item will only be added if there is space
     basket.push(item);
-    return true;
+    return true; // in this case, an item was added and we return true
   } else {
-    console.log('Item could not be added!');
+    console.log('Item could not be added!'); // some user feedback
     return false;
   }
 }
@@ -131,12 +133,12 @@ console.log(`Basket contains ${basket.length} items`);
 // Use Array.splice to remove the first matching item from the basket.
 // Return the item removed or null if the item was not found
 function removeItem(item) {
-  const itemIndex = basket.indexOf(item);
-  if (itemIndex >= 0) { // test if item was found
-    const removedItem = basket.splice(itemIndex, 1);
-    return removedItem[0]; // return a string instead of an array
+  const itemIndex = basket.indexOf(item); // find the position (index) of the item in the array, if there is an index
+  if (itemIndex >= 0) { // test if item was found: if not found, the .indexOf() function would have returned -1
+    const removedItem = basket.splice(itemIndex, 1); // .splice() will remove 1 item starting at the given index
+    return removedItem[0]; // return a string (first element of array) instead of an array
   } else {
-    return null;
+    return null; // no item could be found
   }
 }
 
